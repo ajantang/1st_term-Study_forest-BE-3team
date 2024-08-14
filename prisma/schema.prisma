@@ -14,20 +14,20 @@ datasource db {
 }
 
 model Study {
-  id          String      @id @default(uuid())
-  nickname    String      @db.VarChar(12)
-  study_name  String      @db.VarChar(20)
-  description String?     @db.VarChar(100)
-  background  String      @db.VarChar(50)
-  password    String      @db.VarChar(24)
+  id          String     @id @default(uuid())
+  nickname    String     @db.VarChar(12)
+  study_name  String     @db.VarChar(20)
+  description String?    @db.VarChar(100)
+  background  String     @db.VarChar(50)
+  password    String     @db.VarChar(24)
   point       Int
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  Emoticons   Emoticons[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  Emoticons   Emoticon[]
   Habit       Habit[]
 }
 
-model Emoticons {
+model Emoticon {
   id       String @id @default(uuid())
   Study    Study  @relation(fields: [study_id], references: [id], onDelete: Cascade)
   study_id String
