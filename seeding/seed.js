@@ -16,8 +16,8 @@ async function main() {
   await prisma.habit.createMany({
     data: Habits,
   });
-  await prisma.habit_Success_Date.deleteMany();
-  await prisma.habit_Success_Date.createMany({
+  await prisma.habitSuccessDate.deleteMany();
+  await prisma.habitSuccessDate.createMany({
     data: Habit_Success_Dates,
   });
 }

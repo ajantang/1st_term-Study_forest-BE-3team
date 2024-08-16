@@ -6,4 +6,4 @@ GET http://localhost:3000/study/1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb
 ###
 
 ###
-GET http://localhost:3000/study/1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb/habit
+GET http://localhost:3000/study/1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb/habitData

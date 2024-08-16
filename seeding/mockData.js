@@ -2,7 +2,7 @@ export const Studies = [
   {
     id: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
     nickname: "study_123",
-    study_name: "My First Study",
+    studyName: "My First Study",
     description: "This is a test study for my habit tracker app.",
     background: "test.jpg",
     password: "test_password123",
@@ -13,7 +13,7 @@ export const Studies = [
   {
     id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93ef",
     nickname: "study_456",
-    study_name: "My Second Study",
+    studyName: "My Second Study",
     description: "This is another test study for my habit tracker app.",
     background: "test.jpg",
     password: "test_password456",
@@ -24,7 +24,7 @@ export const Studies = [
   {
     id: "93c5f9c1-4a3d-414e-b67b-a6edeb8da76",
     nickname: "study_789",
-    study_name: "My Third Study",
+    studyName: "My Third Study",
     description: "This is yet another test study for my habit tracker app.",
     background: "test.jpg",
     password: "test_password789",
@@ -35,7 +35,7 @@ export const Studies = [
   {
     id: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
     nickname: "study_1011",
-    study_name: "My Fourth Study",
+    studyName: "My Fourth Study",
     description: "This is yet another test study for my habit tracker app.",
     background: "test.jpg",
     password: "test_password1011",
@@ -48,26 +48,26 @@ export const Studies = [
 export const Emoticons = [
   {
     id: "b5c3d1a6-4f44-43ed-b7ad-9e4ac77d92a",
-    study_id: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
-    emo_num: 12345,
+    studyId: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
+    emoNum: 12345,
     count: 10,
   },
   {
     id: "2f8e5b21-f94c-4363-aeb6-c5dd9ed93ef",
-    study_id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93ef",
-    emo_num: 23456,
+    studyId: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93ef",
+    emoNum: 23456,
     count: 20,
   },
   {
     id: "7d4f0bea-bf92-46e8-ab91-d89c9ecb93ec",
-    study_id: "93c5f9c1-4a3d-414e-b67b-a6edeb8da76",
-    emo_num: 34567,
+    studyId: "93c5f9c1-4a3d-414e-b67b-a6edeb8da76",
+    emoNum: 34567,
     count: 30,
   },
   {
     id: "1fc3b5ab-f94c-4363-aeb6-c5dd9ed93ef",
-    study_id: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
-    emo_num: 45678,
+    studyId: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
+    emoNum: 45678,
     count: 40,
   },
 ];
@@ -75,7 +75,7 @@ export const Emoticons = [
 export const Habits = [
   {
     id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af56",
-    study_id: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
+    studyId: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
     name: "Drink Water Daily",
     deleted: false,
     createdAt: "2022-01-01T12:00:00.000Z",
@@ -83,7 +83,7 @@ export const Habits = [
   },
   {
     id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e1",
-    study_id: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
+    studyId: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
     name: "read book",
     deleted: false,
     createdAt: "2022-01-03T10:00:00.000Z",
@@ -91,7 +91,7 @@ export const Habits = [
   },
   {
     id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e2",
-    study_id: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
+    studyId: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
     name: "Exercise Regularly",
     deleted: false,
     createdAt: "2022-01-03T10:00:00.000Z",
@@ -99,7 +99,7 @@ export const Habits = [
   },
   {
     id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
-    study_id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93ef",
+    studyId: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93ef",
     name: "Exercise Regularly",
     deleted: false,
     createdAt: "2022-01-03T10:00:00.000Z",
@@ -107,7 +107,7 @@ export const Habits = [
   },
   {
     id: "93c5f9c1-4a3d-414e-b67b-a6edeb8da76",
-    study_id: "93c5f9c1-4a3d-414e-b67b-a6edeb8da76",
+    studyId: "93c5f9c1-4a3d-414e-b67b-a6edeb8da76",
     name: "Eat Healthy Daily",
     deleted: false,
     createdAt: "2022-01-05T14:00:00.000Z",
@@ -115,7 +115,7 @@ export const Habits = [
   },
   {
     id: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
-    study_id: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
+    studyId: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
     name: "Get Enough Sleep Daily",
     deleted: true,
     createdAt: "2022-01-07T10:00:00.000Z",
@@ -126,55 +126,55 @@ export const Habits = [
 export const Habit_Success_Dates = [
   {
     id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af50",
-    habit_id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af56",
+    habitId: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af56",
     createdAt: "2024-08-11T12:00:00.000Z",
     updatedAt: "2024-08-11T12:00:00.000Z",
   },
   {
     id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af58",
-    habit_id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af56",
+    habitId: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af56",
     createdAt: "2024-08-12T12:00:00.000Z",
     updatedAt: "2024-08-12T12:00:00.000Z",
   },
   {
     id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af59",
-    habit_id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af56",
+    habitId: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af56",
     createdAt: "2024-08-14T12:00:00.000Z",
     updatedAt: "2024-08-14T12:00:00.000Z",
   },
   {
     id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af54",
-    habit_id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
+    habitId: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
     createdAt: "2024-08-11T12:00:00.000Z",
     updatedAt: "2024-08-11T12:00:00.000Z",
   },
   {
     id: "2f8e5b21-f94c-4363-aeb6-c5dd9ed93ef",
-    habit_id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
+    habitId: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
     createdAt: "2024-08-13T14:00:00.000Z",
     updatedAt: "2024-08-13T12:00:00.000Z",
   },
   {
     id: "7d4f0bea-bf92-46e8-ab91-d89c9ecb93ec",
-    habit_id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
+    habitId: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
     createdAt: "2024-08-12T16:00:00.000Z",
     updatedAt: "2024-08-12T12:00:00.000Z",
   },
   {
     id: "1fc3b5ab-f94c-4363-aeb6-c5dd9ed92ef",
-    habit_id: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
+    habitId: "f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93e3",
     createdAt: "2024-08-11T10:00:00.000Z",
     updatedAt: "2024-08-11T12:00:00.000Z",
   },
   {
     id: "8b6c53cd-f2f5-43ef-b67f-d7e94a5af56",
-    habit_id: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
+    habitId: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
     createdAt: "2024-08-11T12:00:00.000Z",
     updatedAt: "2024-08-11T12:00:00.000Z",
   },
   {
     id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af51",
-    habit_id: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
+    habitId: "3f5a9e1c-e8d7-4ca6-b43b-a94df9eb93ec",
     createdAt: "2024-08-12T12:00:00.000Z",
     updatedAt: "2024-08-12T12:00:00.000Z",
   },
