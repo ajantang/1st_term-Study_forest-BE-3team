@@ -329,7 +329,9 @@ app.post(
     });
 
     if (req.body.password !== password) {
-      throwUnauthorized();
+      const result = { result: false };
+      res.status(200).send(result);
+      return;
     }
 
     const result = { result: true };
