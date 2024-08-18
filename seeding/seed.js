@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { Studies, Emoticons, Habits, Habit_Success_Dates } from "./mockData.js";
+import { Studies, Emojis, Habits, HabitSuccessDates } from "./mockData.js";
 
 const prisma = new PrismaClient();
 
@@ -8,9 +8,9 @@ async function main() {
   await prisma.study.createMany({
     data: Studies,
   });
-  await prisma.emoticon.deleteMany();
-  await prisma.emoticon.createMany({
-    data: Emoticons,
+  await prisma.emoji.deleteMany();
+  await prisma.emoji.createMany({
+    data: Emojis,
   });
   await prisma.habit.deleteMany();
   await prisma.habit.createMany({
@@ -18,7 +18,7 @@ async function main() {
   });
   await prisma.habitSuccessDate.deleteMany();
   await prisma.habitSuccessDate.createMany({
-    data: Habit_Success_Dates,
+    data: HabitSuccessDates,
   });
 }
 

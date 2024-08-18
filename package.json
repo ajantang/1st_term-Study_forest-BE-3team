@@ -15,7 +15,7 @@
     "prisma": "^5.18.0"
   },
   "scripts": {
-    "nodemon": "nodemon src/main.js"
+    "nodemon": "nodemon main.js"
   },
   "prisma": {
     "seed": "node seeding/seed.js"

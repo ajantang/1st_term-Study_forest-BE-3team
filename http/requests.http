@@ -1,9 +1,51 @@
 ###
-GET http://localhost:3000/study/1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb
+POST http://localhost:3000/study
+Content-Type: application/json
+
+{
+    "nickname" : "test12",
+    "studyName" : "test12",
+    "description" : "test1112",
+    "background" : "test.png",
+    "password" : "asdqwe123"
+}
 
 ###
-
-###
+GET http://localhost:3000/study/c469a95c-7904-4130-a130-6778f53d1754
 
 ###
 GET http://localhost:3000/study/1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb/habitData
+
+###
+PATCH http://localhost:3000/study/47829ef1-aafd-4e54-b89e-b6d08be8a7a6
+Content-Type: application/json
+
+{
+    "nickname" : "수정",
+    "studyName" : "test12",
+    "description" : "설명 수정",
+    "background" : "test.png"
+}
+
+###
+DELETE http://localhost:3000/study/c469a95c-7904-4130-a130-6778f53d1754
+
+###
+POST http://localhost:3000/study/f7a6b2e3-8d4c-40ec-b5ac-a1dd9ed93ef/auth
+Content-Type: application/json
+
+{
+    "password" : "test_password456"
+}
+
+
+###
+GET http://localhost:3000/study/1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb/habitData
+
+
+###
+GET http://localhost:3000/study/1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb/emoji
+
+###
+PUT http://localhost:3000/study/1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb/emoji/1234
+

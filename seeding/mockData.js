@@ -45,7 +45,7 @@ export const Studies = [
   },
 ];
 
-export const Emoticons = [
+export const Emojis = [
   {
     id: "b5c3d1a6-4f44-43ed-b7ad-9e4ac77d92a",
     studyId: "1e7b3d8a-ae0f-4c2f-b9ec-c77a5cd93eb",
@@ -123,7 +123,7 @@ export const Habits = [
   },
 ];
 
-export const Habit_Success_Dates = [
+export const HabitSuccessDates = [
   {
     id: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af50",
     habitId: "8b6c53cd-f2f5-43ef-b67f-d7e94a3af56",
