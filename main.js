@@ -69,7 +69,7 @@ function throwUnauthorized() {
   throw error;
 }
 
-const selectFormat = { emoNum: true, count: true };
+const emojiFormat = { emoNum: true, count: true };
 
 /** /study POST 스터디 생성 */
 app.post(
@@ -317,7 +317,7 @@ app.delete("/study/:id", async (req, res) => {
 });
 
 // 이진우 담당 API
-/** /study/:id/auth 비밀번호 일치 확인 */
+/** /study/:id/auth POST 비밀번호 일치 확인 */
 app.post(
   "/study/:id/auth",
   asyncHandler(async (req, res) => {
@@ -426,13 +426,14 @@ app.get("/study/:id/habitList", async (req, res) => {
 });
 
 // 이진우 담당 API
-/** /study/:id/habit GET 습관 정보 조회(성공 날짜 포함) */
+/** /study/:id/habitData GET 습관 정보 조회(최근 일주일 성공 날짜 정보 포함) */
 app.get(
   "/study/:id/habitData",
   asyncHandler(async (req, res) => {
     const { id: studyId } = req.params;
     const now = new Date();
-    const oneWeekAgo = subDays(now, 6);
+    const dbNow = now.setHours(now.getDate() - 9);
+    const oneWeekAgo = subDays(dbNow, 6);
 
     const study = await prisma.study.findUniqueOrThrow({
       where: { id: studyId },
@@ -450,7 +451,7 @@ app.get(
       const success = HabitSuccessDates.map((date) => {
         const successDay = moment(date.createdAt, "YYYY-MM-DDTHH:mm:ss.SSSZ");
         const diff =
-          Math.floor(successDay.diff(now) / (1000 * 60 * 60 * 24)) + 6;
+          Math.floor(successDay.diff(dbNow) / (1000 * 60 * 60 * 24)) + 6;
 
         return diff;
       });
@@ -532,7 +533,7 @@ app.patch("/habit/:id/delete", async (req, res) => {
 /** /habit/:id/success DELETE 완료된 습관 취소 */
 
 // 이진우 담당 API
-/** /study/:id/emoticon GET 응원 이모지 조회 */
+/** /study/:id/emoji GET 응원 이모지 조회 */
 app.get(
   "/study/:id/emoji",
   asyncHandler(async (req, res) => {
@@ -541,7 +542,7 @@ app.get(
     const study = await prisma.study.findUniqueOrThrow({
       where: { id: studyId },
       include: {
-        Emojis: { orderBy: { count: "desc" }, select: selectFormat },
+        Emojis: { orderBy: { count: "desc" }, select: emojiFormat },
       },
     });
 
@@ -561,7 +562,7 @@ app.get(
 );
 
 // 이진우 담당 API
-/** /study/:id/emoticon 미정 응원 이모지 추가 */
+/** /study/:id/emoji/:emojiNum GET 미정 응원 이모지 추가 */
 app.put(
   "/study/:id/emoji/:emojiNum",
   asyncHandler(async (req, res) => {
@@ -575,7 +576,7 @@ app.put(
       const data = { emoNum: castedEmoNum, count: 1, studyId: studyId };
       const result = await prisma.emoji.create({
         data: data,
-        select: selectFormat,
+        select: emojiFormat,
       });
       res.status(201).send(result);
       return;
@@ -584,7 +585,7 @@ app.put(
       const result = await prisma.emoji.update({
         where: { id: emoji.id },
         data: data,
-        select: selectFormat,
+        select: emojiFormat,
       });
       res.status(200).send(result);
       return;
