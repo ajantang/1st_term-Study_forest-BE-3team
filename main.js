@@ -374,14 +374,14 @@ app.patch(
   })
 );
 
-/** /habit/:id/success POST 완료한 습관 추가 */
+/** /success POST 완료한 습관 추가 */
 app.post(
-  "/habit/:id/success",
+  "/success",
   asyncHandler(async (req, res) => {
-    const { id } = req.params;
-
     const success = await prisma.habitSuccessDate.create({
-      data: { habitId: id },
+      data: {
+        ...req.body,
+      },
       select: {
         id: true,
         createdAt: true,
