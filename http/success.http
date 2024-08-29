@@ -1,6 +1,11 @@
-###
-POST http://localhost:3000/habit/6e6a4837-0254-4ee1-8de2-300df2fb28ac/success
+### "6e6a4837-0254-4ee1-8de2-300df2fb28ac"(확인용 아이디)
+POST http://localhost:3000/success
+Content-Type: application/json
+
+{
+    "habitId": "6e6a4837-0254-4ee1-8de2-300df2fb28ac"
+}
 
 
-###
+### 
 DELETE http://localhost:3000/success/d154d046-25e7-487a-a756-a769621c3fb7
