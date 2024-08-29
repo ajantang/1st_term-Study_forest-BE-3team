@@ -43,72 +43,72 @@ Database: PostgreSQL
 상세 스터디 수정 API   
 (API 상세 명세 주소: https://www.notion.so/1b7096453bc3443dbaa3e3ce238f4778?pvs=25)
 
-상세 스터디 삭제 API
+상세 스터디 삭제 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-DELETE-05b23e87e88d46038a61c90420003848)
 
-비밀번호 일치 확인 API
+비밀번호 일치 확인 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-auth-POST-1ff5c059e5b945c190093f1d7023e486)
 
-습관 데이터 조회 API
+습관 데이터 조회 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-habitData-GET-97979e145acb40759a05eae1dc59de57)
 
-응원 이모지 조회 API
+응원 이모지 조회 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-emoji-GET-e4cb37bc95c244299a62a0a0f8515133)
 
-응원 이모지 추가 API
+응원 이모지 추가 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-emoji-PUT-1f82404b7ce64df29dd8bdeec8b79c61)
 
 ### 박성현
 
-스터디 생성 API 
+스터디 생성 API    
 (API 상세 명세 주소: https://www.notion.so/study-POST-f0deb7d57ddc4ea3aedbac1afa43d258)
 
-스터디 목록 조회 API
+스터디 목록 조회 API   
 (API 상세 명세 주소: https://www.notion.so/12712b1b4ef74a08b6efa88d3880556c?pvs=25)
 
-상세 스디 조회 API
+상세 스디 조회 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-GET-c75fa54e8f1042468c5de6e3696d5cc4)
 
 ### 송영섭
 
-습관 생성 API
+습관 생성 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-habits-POST-d25cc4055b8f40639b288f1f88e3d8fc?pvs=21)
 
-습관 이름 변경 API
+습관 이름 변경 API   
 (API 상세 명세 주소: https://www.notion.so/habit-id-delete-PATCH-cd7aacf975e24c98bc5924c6e2eb826f)
 
-습관 삭제 APi
+습관 삭제 APi   
 (API 상세 명세 주소: https://www.notion.so/habit-id-delete-PATCH-cd7aacf975e24c98bc5924c6e2eb826f)
 
-습관 리스트 조회 API
+습관 리스트 조회 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-habitList-GET-9b50669ecb014cf490118c502ef02a53)
 
-완료한 습관 추가 API
+완료한 습관 추가 API   
 (API 상세 명세 주소: https://www.notion.so/habits-id-habitSuceessed-POST-fc4249b716394795beb3561e6a4038a0?pvs=21)
 
-완료한 습관 취소 API
+완료한 습관 취소 API   
 (API 상세 명세 주소: https://www.notion.so/HabitSuccessed-id-DELETE-09b875a41ba8439db5d123a74a6341de?pvs=21)
 
 ### 이율리
 
-상세 스터디 수정 API
+상세 스터디 수정 API   
 (API 상세 명세 주소: https://www.notion.so/1b7096453bc3443dbaa3e3ce238f4778?pvs=25)
 
 ## Schema
 
 ### Study
 
-  id          String   @id @default(uuid())
-  nickname    String   @unique @db.VarChar(12)
-  studyName   String   @map("study_name") @db.VarChar(20)
-  description String   @default("") @db.VarChar(100)
-  background  String   @db.VarChar(100)
-  password    String   @db.VarChar(24)
-  point       Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  Emojis      Emoji[]
-  Habits      Habit[]
+  id          String   @id @default(uuid())   
+  nickname    String   @unique @db.VarChar(12)   
+  studyName   String   @map("study_name") @db.VarChar(20)   
+  description String   @default("") @db.VarChar(100)   
+  background  String   @db.VarChar(100)   
+  password    String   @db.VarChar(24)   
+  point       Int      @default(0)   
+  createdAt   DateTime @default(now())   
+  updatedAt   DateTime @updatedAt   
+  Emojis      Emoji[]   
+  Habits      Habit[]   
 
 ### Emoji
 
