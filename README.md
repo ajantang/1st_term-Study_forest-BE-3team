@@ -37,10 +37,10 @@ Database: PostgreSQL
 
 ### 이진우
 
-상세 스터디 조회 API
+상세 스터디 조회 API   
 (API 상세 명세 주소: https://www.notion.so/study-id-GET-c75fa54e8f1042468c5de6e3696d5cc4)
 
-상세 스터디 수정 API
+상세 스터디 수정 API   
 (API 상세 명세 주소: https://www.notion.so/1b7096453bc3443dbaa3e3ce238f4778?pvs=25)
 
 상세 스터디 삭제 API
