@@ -98,6 +98,7 @@ Database: PostgreSQL
 
 ### Study
 
+```
   id          String   @id @default(uuid())   
   nickname    String   @unique @db.VarChar(12)   
   studyName   String   @map("study_name") @db.VarChar(20)   
@@ -108,37 +109,43 @@ Database: PostgreSQL
   createdAt   DateTime @default(now())   
   updatedAt   DateTime @updatedAt   
   Emojis      Emoji[]   
-  Habits      Habit[]   
+  Habits      Habit[]
+```
 
 ### Emoji
 
-  id        String   @id @default(uuid())
-  Study     Study    @relation(fields: [studyId], references: [id], onDelete: Cascade)
-  studyId   String   @map("study_id")
-  emojiCode String   @map("emoji_code") @db.VarChar(49)
-  count     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+```
+  id        String   @id @default(uuid())   
+  Study     Study    @relation(fields: [studyId], references: [id], onDelete: Cascade)   
+  studyId   String   @map("study_id")   
+  emojiCode String   @map("emoji_code") @db.VarChar(49)   
+  count     Int      @default(0)   
+  createdAt DateTime @default(now())   
+  updatedAt DateTime @updatedAt   
+```
 
 ### Habit
 
-  id                String             @id @default(uuid())
-  Study             Study              @relation(fields: [studyId], references: [id], onDelete: Cascade)
-  studyId           String             @map("study_id")
-  name              String             @db.VarChar(30)
-  deleted           Boolean            @default(false)
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime           @updatedAt
-  HabitSuccessDates HabitSuccessDate[]
+```
+  id                String             @id @default(uuid())   
+  Study             Study              @relation(fields: [studyId], references: [id], onDelete: Cascade)   
+  studyId           String             @map("study_id")   
+  name              String             @db.VarChar(30)   
+  deleted           Boolean            @default(false)   
+  createdAt         DateTime           @default(now())   
+  updatedAt         DateTime           @updatedAt   
+  HabitSuccessDates HabitSuccessDate[]   
+```
 
 ### HabitSuccessDate
 
-  id        String   @id @default(uuid())
-  Habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
-  habitId   String   @map("habit_id")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+```
+  id        String   @id @default(uuid())   
+  Habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)   
+  habitId   String   @map("habit_id")   
+  createdAt DateTime @default(now())   
+  updatedAt DateTime @updatedAt   
+```
 
 ## 파일 구조
 
