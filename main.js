@@ -313,7 +313,7 @@ app.get(
           UTCTime,
           "milliseconds"
         ).milliseconds;
-        const diff = Math.ceil(diffInDays / (1000 * 60 * 60 * 24)) + 6;
+        const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 5;
 
         return diff;
       });
