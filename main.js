@@ -279,7 +279,6 @@ app.get(
     const startOfDay = now.startOf("day");
     const UTCTime = startOfDay.toUTC();
     const oneWeekAgo = UTCTime.minus({ days: 6 });
-    
 
     const study = await prisma.study.findUniqueOrThrow({
       where: { id: studyId },
@@ -299,32 +298,31 @@ app.get(
       const success = HabitSuccessDates.map((date) => {
         const checkTimeZone = date.createdAt.getTimezoneOffset();
 
-        let timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
+        let timeZoneMilisec;
 
-        // if (checkTimeZone !== 0) {
-        //   timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
-        // } else {
-        //   const getNow = startOfDay.offset;
+        if (checkTimeZone !== 0) {
+          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0);
+        } else if (checkTimeZone === 0) {
+          const getNow = startOfDay.offset;
 
-        //   timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
-        // }
+          timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
+        } else {
+          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0);
+        }
 
-        const successDay = DateTime.fromMillis(timeZoneMilisec)
+        const successDay = DateTime.fromMillis(timeZoneMilisec);
         const i = successDay.toUTC();
-        const diffInDays = i.diff(
-          UTCTime,
-          "milliseconds"
-        ).milliseconds;
+        const diffInDays = i.diff(UTCTime, "milliseconds").milliseconds;
         const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
 
-        return [successDay, timeZoneMilisec, UTCTime, i, diffInDays, diff];
+        return diff;
       });
 
       return {
         id: id,
         name: name,
         deleted: deleted,
-        success:[...HabitSuccessDates, ...success]
+        success: [...HabitSuccessDates, ...success],
         // success: success,
       };
     });
