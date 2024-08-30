@@ -25,4 +25,7 @@ Content-Type: application/json
 PATCH   http://localhost:3000/habit/eb6a5571-f1b7-4fcf-ac55-1f27d6dddd0d/delete
 
 ###
-GET https://onest-term-study-forest-be-3team-kjey.onrender.com/study/90d39985-a1ab-4cb3-985c-db26aba4dc94/habitData
+GET https://onest-term-study-forest-be-3team-kjey.onrender.com/study/648ab555-4ca1-40e5-91dc-6fdf0c793488/habitList
+
+###
+https://onest-term-study-forest-be-3team-kjey.onrender.com/study/648ab555-4ca1-40e5-91dc-6fdf0c793488/habitData?timeZone=Asia%2FSeoul

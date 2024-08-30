@@ -322,7 +322,8 @@ app.get(
         id: id,
         name: name,
         deleted: deleted,
-        success: success,
+        // success: success,
+        success: [...HabitSuccessDates, success],
       };
     });
 
