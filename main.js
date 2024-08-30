@@ -316,7 +316,7 @@ app.get(
         ).milliseconds;
         const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
 
-        return diff;
+        return diff, diffInDays;
       });
 
       return {
