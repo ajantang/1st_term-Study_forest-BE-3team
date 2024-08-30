@@ -299,28 +299,33 @@ app.get(
       const success = HabitSuccessDates.map((date) => {
         const checkTimeZone = date.createdAt.getTimezoneOffset();
 
-        let timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
-        let u = new Date(date.createdAt).getTime()
-        // if (checkTimeZone !== 0) {
-        //   timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
-        // } else {
-        //   const getNow = startOfDay.offset;
+        const getNow = startOfDay.offset;
+        let timeZoneMilisec;
+        let successDay
 
-        //   timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
-        // }
+        if (checkTimeZone !== 0) {
+          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
 
-        const successDay = DateTime.fromMillis(timeZoneMilisec).setZone(decodedTimeZone);
-        const er = DateTime.fromMillis(u)
-        const e0 = er.startOf("day");
-        
-        const i = successDay.toUTC();
-        const diffInDays = i.diff(
+          successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
+
+        } else if(checkTimeZone === 0) {
+          timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
+
+          successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
+
+        } else {
+          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0) - getNow * 60 * 1000;
+
+          successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
+        } // checkTimeZone이 작동을 안할때
+
+        const diffInDays = successDay.diff(
           UTCTime,
           "milliseconds"
         ).milliseconds;
         const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
 
-        return [UTCTime, timeZoneMilisec, successDay, er, e0, i, diffInDays, diff];
+        return [getNow, successDay, diff];
       });
 
       return {
