@@ -293,37 +293,60 @@ app.get(
       },
     });
 
+    // const habits = study.Habits.map((item) => {
+    //   const { id, name, deleted, HabitSuccessDates } = item;
+    //   const success = HabitSuccessDates.map((date) => {
+    //     const checkTimeZone = date.createdAt.getTimezoneOffset();
+
+    //     let timeZoneMilisec;
+
+    //     if (checkTimeZone !== 0) {
+    //       timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0);
+    //     } else {
+    //       const getNow = startOfDay.offset;
+
+    //       timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
+    //     }
+
+    //     const successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
+    //     const diffInDays = successDay.diff(
+    //       UTCTime,
+    //       "milliseconds"
+    //     ).milliseconds;
+    //     const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
+
+    //     return diff;
+    //   });
+
+    //   return {
+    //     id: id,
+    //     name: name,
+    //     deleted: deleted,
+    //     success: success,
+    //     // success: [...HabitSuccessDates, success],
+    //   };
+    // });
     const habits = study.Habits.map((item) => {
       const { id, name, deleted, HabitSuccessDates } = item;
       const success = HabitSuccessDates.map((date) => {
-        const checkTimeZone = date.createdAt.getTimezoneOffset();
+        const createdAtInClientTZ = DateTime.fromJSDate(date.createdAt).setZone(
+          decodedTimeZone
+        );
+        const diffInDays = Math.floor(
+          createdAtInClientTZ.diff(UTCTime, "days").days
+        );
 
-        let timeZoneMilisec;
-
-        if (checkTimeZone !== 0) {
-          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0);
-        } else {
-          const getNow = startOfDay.offset;
-
-          timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
-        }
-
-        const successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
-        const diffInDays = successDay.diff(
-          UTCTime,
-          "milliseconds"
-        ).milliseconds;
-        const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
+        // `diffInDays`가 0부터 6의 범위를 벗어나지 않도록 조정
+        const diff = diffInDays >= 0 && diffInDays <= 6 ? diffInDays : null;
 
         return diff;
-      });
+      }).filter((day) => day !== null);
 
       return {
         id: id,
         name: name,
         deleted: deleted,
-        // success: success,
-        success: [...HabitSuccessDates, success],
+        success: success,
       };
     });
 
