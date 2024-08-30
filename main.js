@@ -317,14 +317,14 @@ app.get(
         ).milliseconds;
         const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
 
-        return i;
+        return [successDay, timeZoneMilisec];
       });
 
       return {
         id: id,
         name: name,
         deleted: deleted,
-        success:[...HabitSuccessDates, success]
+        success:[...HabitSuccessDates, ...success]
         // success: success,
       };
     });
