@@ -329,18 +329,17 @@ app.get(
     const habits = study.Habits.map((item) => {
       const { id, name, deleted, HabitSuccessDates } = item;
       const success = HabitSuccessDates.map((date) => {
-        const createdAtInClientTZ = DateTime.fromJSDate(date.createdAt).setZone(
-          decodedTimeZone
-        );
+        const createdAtInClientTZ = DateTime.fromJSDate(date.createdAt)
+          .setZone(decodedTimeZone)
+          .startOf("day");
         const diffInDays = Math.floor(
           createdAtInClientTZ.diff(UTCTime, "days").days
         );
 
-        // `diffInDays`가 0부터 6의 범위를 벗어나지 않도록 조정
-        const diff = diffInDays >= 0 && diffInDays <= 6 ? diffInDays : null;
+        const diff = 6 - diffInDays;
 
         return diff;
-      }).filter((day) => day !== null);
+      });
 
       return {
         id: id,
