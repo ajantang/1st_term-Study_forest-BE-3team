@@ -300,7 +300,7 @@ app.get(
         const checkTimeZone = date.createdAt.getTimezoneOffset();
 
         let timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
-
+        let u = new Date(date.createdAt).getTime()
         // if (checkTimeZone !== 0) {
         //   timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
         // } else {
@@ -310,6 +310,9 @@ app.get(
         // }
 
         const successDay = DateTime.fromMillis(timeZoneMilisec).setZone(decodedTimeZone);
+        const er = DateTime.fromMillis(u)
+        const e0 = er.startOf("day");
+        
         const i = successDay.toUTC();
         const diffInDays = i.diff(
           UTCTime,
@@ -317,7 +320,7 @@ app.get(
         ).milliseconds;
         const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
 
-        return [successDay, timeZoneMilisec, UTCTime, i, diffInDays, diff];
+        return [UTCTime, timeZoneMilisec, successDay, er, e0, i, diffInDays, diff];
       });
 
       return {
