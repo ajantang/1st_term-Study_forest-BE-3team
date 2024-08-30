@@ -307,32 +307,11 @@ app.get(
         return dayIndex;
       });
 
-      // const description = HabitSuccessDates.map((date) => {
-      //   const luxondateTypeData = DateTime.fromJSDate(date.createdAt);
-      //   const setTimeOfLocalTimeZone =
-      //     luxondateTypeData.setZone(decodedTimeZone);
-      //   const getTimeOfLocalTimeZoneStartDayTime =
-      //     setTimeOfLocalTimeZone.startOf("day");
-      //   const timeGapStartOfDayUTCToLocalTimeZoneStartDay = startOfDayUTC.diff(
-      //     getTimeOfLocalTimeZoneStartDayTime,
-      //     "days"
-      //   ).days;
-      //   const afterFloorDaysData = Math.floor(
-      //     timeGapStartOfDayUTCToLocalTimeZoneStartDay
-      //   );
-      //   const dayIndex = 6 - afterFloorDaysData;
-
-      //   const result = `luxon의 datetype 정보로 변환 : ${luxondateTypeData} \n timezone 설정 : ${setTimeOfLocalTimeZone} \n 성공일의 생성 시간을 기준으로 timezone 시간의 00시에 해당하는 시간으로 변환(해당 날짜 00시로) : ${getTimeOfLocalTimeZoneStartDayTime} \n 성공 데이터의 00시와 오늘 00시와의 날짜 차이 : ${timeGapStartOfDayUTCToLocalTimeZoneStartDay} \n floor 처리 : ${afterFloorDaysData} \n dayIndex : ${dayIndex}`;
-
-      //   return result;
-      // });
-
       return {
         id: id,
         name: name,
         deleted: deleted,
         success: success,
-        // description: description,
       };
     });
 
