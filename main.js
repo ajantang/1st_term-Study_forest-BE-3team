@@ -301,7 +301,7 @@ app.get(
         let timeZoneMilisec;
 
         if (checkTimeZone !== 0) {
-          timeZoneMilisec = date.createdAt.getTime();
+          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0);
         } else {
           const getNow = startOfDay.offset;
 
