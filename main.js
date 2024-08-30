@@ -270,28 +270,28 @@ app.get(
 app.get(
   "/study/:id/habitData",
   asyncHandler(async (req, res) => {
-    const { id: studyId } = req.params;
-    const { timeZone } = req.query;
-    const decodedTimeZone = decodeURIComponent(timeZone);
-    assert(decodedTimeZone, ValidateTimeZone);
-    // const timeZoneString = timeZone || "Asia/Seoul";
-    const now = DateTime.now().setZone(decodedTimeZone);
-    const startOfDay = now.startOf("day");
-    const UTCTime = startOfDay.toUTC();
-    const oneWeekAgo = UTCTime.minus({ days: 6 });
+    // const { id: studyId } = req.params;
+    // const { timeZone } = req.query;
+    // const decodedTimeZone = decodeURIComponent(timeZone);
+    // assert(decodedTimeZone, ValidateTimeZone);
+    // // const timeZoneString = timeZone || "Asia/Seoul";
+    // const now = DateTime.now().setZone(decodedTimeZone);
+    // const startOfDay = now.startOf("day");
+    // const UTCTime = startOfDay.toUTC();
+    // const oneWeekAgo = UTCTime.minus({ days: 6 });
 
-    const study = await prisma.study.findUniqueOrThrow({
-      where: { id: studyId },
-      include: {
-        Habits: {
-          include: {
-            HabitSuccessDates: {
-              where: { createdAt: { gte: oneWeekAgo.toISO() } },
-            },
-          },
-        },
-      },
-    });
+    // const study = await prisma.study.findUniqueOrThrow({
+    //   where: { id: studyId },
+    //   include: {
+    //     Habits: {
+    //       include: {
+    //         HabitSuccessDates: {
+    //           where: { createdAt: { gte: oneWeekAgo.toISO() } },
+    //         },
+    //       },
+    //     },
+    //   },
+    // });
 
     // const habits = study.Habits.map((item) => {
     //   const { id, name, deleted, HabitSuccessDates } = item;
@@ -326,6 +326,37 @@ app.get(
     //     // success: [...HabitSuccessDates, success],
     //   };
     // });
+
+    // const result = {
+    //   id: studyId,
+    //   totalHabit: habits.length,
+    //   habits: habits,
+    // };
+
+    // res.status(200).send(result);
+
+    const { id: studyId } = req.params;
+    const { timeZone } = req.query;
+    const decodedTimeZone = decodeURIComponent(timeZone);
+    assert(decodedTimeZone, ValidateTimeZone);
+
+    const now = DateTime.now().setZone(decodedTimeZone).startOf("day");
+    const startOfDayUTC = now.toUTC(); // 오늘의 UTC 시작 시점
+    const oneWeekAgo = startOfDayUTC.minus({ days: 6 });
+
+    const study = await prisma.study.findUniqueOrThrow({
+      where: { id: studyId },
+      include: {
+        Habits: {
+          include: {
+            HabitSuccessDates: {
+              where: { createdAt: { gte: oneWeekAgo.toISO() } },
+            },
+          },
+        },
+      },
+    });
+
     const habits = study.Habits.map((item) => {
       const { id, name, deleted, HabitSuccessDates } = item;
       const success = HabitSuccessDates.map((date) => {
@@ -333,12 +364,12 @@ app.get(
           .setZone(decodedTimeZone)
           .startOf("day");
         const diffInDays = Math.floor(
-          createdAtInClientTZ.diff(UTCTime, "days").days
+          startOfDayUTC.diff(createdAtInClientTZ, "days").days
         );
 
-        const diff = 6 - diffInDays;
+        const dayIndex = 6 - diffInDays;
 
-        return diff;
+        return dayIndex;
       });
 
       return {
