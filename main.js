@@ -309,15 +309,10 @@ app.get(
           successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
 
         } else if(checkTimeZone === 0) {
-          timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
+          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0) - getNow * 60 * 1000;
 
           successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
-
-        } else {
-          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0) - (getNow * 60 * 1000);
-
-          successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
-        } // checkTimeZone이 작동을 안할때
+        }
 
         const diffInDays = successDay.diff(
           UTCTime,
