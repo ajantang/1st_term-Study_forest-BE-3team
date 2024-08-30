@@ -296,6 +296,12 @@ export const HabitSuccessed = [
     habitId: "24c7010a-181d-4305-86b6-5584ff36ac52",
   },
   {
+    id: "65670e0d-e1ba-4f19-9b26-6d9c63b14e7c",
+    createdAt: "2024-08-28T08:59:10.084Z",
+    updatedAt: "2024-08-28T08:59:10.084Z",
+    habitId: "24c7010a-181d-4305-86b6-5584ff36ac52",
+  },
+  {
     id: "68d3869d-8d29-4ae8-82fb-0276ab83d33b",
     updatedAt: "2024-08-08T10:02:10.084Z",
     createdAt: "2024-08-08T10:02:10.084Z",
@@ -354,6 +360,12 @@ export const HabitSuccessed = [
     createdAt: "2024-08-19T10:02:10.084Z",
     updatedAt: "2024-08-19T10:02:10.084Z",
     habitId: "80a95a41-2776-41d2-b814-eb346b390584",
+  },
+  {
+    id: "f2fe0507-80a0-4781-af90-59954b20b2ed",
+    createdAt: "2024-08-26T15:02:10.084Z",
+    updatedAt: "2024-08-26T15:02:10.084Z",
+    habitId: "24c7010a-181d-4305-86b6-5584ff36ac52",
   },
   {
     id: "f2fe0507-80a0-4781-af90-59954b20b3ed",
