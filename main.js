@@ -309,14 +309,15 @@ app.get(
           timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
         }
 
-        const successDay = DateTime.fromMillis(timeZoneMilisec).toUTC();
-        const diffInDays = successDay.diff(
+        const successDay = DateTime.fromMillis(timeZoneMilisec)
+        const i = successDay.toUTC();
+        const diffInDays = i.diff(
           UTCTime,
           "milliseconds"
         ).milliseconds;
         const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
 
-        return diffInDays;
+        return diff;
       });
 
       return {
