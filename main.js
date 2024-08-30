@@ -299,15 +299,15 @@ app.get(
       const success = HabitSuccessDates.map((date) => {
         const checkTimeZone = date.createdAt.getTimezoneOffset();
 
-        let timeZoneMilisec;
+        let timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
 
-        if (checkTimeZone !== 0) {
-          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
-        } else {
-          const getNow = startOfDay.offset;
+        // if (checkTimeZone !== 0) {
+        //   timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
+        // } else {
+        //   const getNow = startOfDay.offset;
 
-          timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
-        }
+        //   timeZoneMilisec = date.createdAt.getTime() + getNow * 60 * 1000;
+        // }
 
         const successDay = DateTime.fromMillis(timeZoneMilisec)
         const i = successDay.toUTC();
@@ -317,7 +317,7 @@ app.get(
         ).milliseconds;
         const diff = Math.floor(diffInDays / (1000 * 60 * 60 * 24)) + 6;
 
-        return [successDay, timeZoneMilisec, UTCTime, checkTimeZone];
+        return [successDay, timeZoneMilisec, UTCTime, i, diffInDays, diff];
       });
 
       return {
