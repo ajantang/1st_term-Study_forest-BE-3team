@@ -3,8 +3,12 @@ GET  http://localhost:3000/study
 ###
 GET  http://localhost:3000/study?page=&pageSize=&order=recent&keyWord=스턴트
 
+
 ###
-GET  http://localhost:3000/study/afeac530-e924-4253-9666-c247f41725aa/habitData?timeZone=
+GET  http://localhost:3000/study/648ab555-4ca1-40e5-91dc-6fdf0c793488/habitData?timeZone=Asia%2FSeoul
+
+###
+GET   https://onest-term-study-forest-be-3team-kjey.onrender.com/study/648ab555-4ca1-40e5-91dc-6fdf0c793488/habitData?timeZone=Asia%2FSeoul
 
 
 ###

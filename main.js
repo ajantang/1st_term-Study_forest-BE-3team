@@ -279,6 +279,7 @@ app.get(
     const startOfDay = now.startOf("day");
     const UTCTime = startOfDay.toUTC();
     const oneWeekAgo = UTCTime.minus({ days: 6 });
+    
 
     const study = await prisma.study.findUniqueOrThrow({
       where: { id: studyId },
@@ -301,7 +302,7 @@ app.get(
         let timeZoneMilisec;
 
         if (checkTimeZone !== 0) {
-          timeZoneMilisec = date.createdAt.getTime();
+          timeZoneMilisec = new Date(date.createdAt).setHours(0, 0, 0, 0)
         } else {
           const getNow = startOfDay.offset;
 
@@ -322,7 +323,8 @@ app.get(
         id: id,
         name: name,
         deleted: deleted,
-        success: success,
+        success:[...HabitSuccessDates, success]
+        // success: success,
       };
     });
 
