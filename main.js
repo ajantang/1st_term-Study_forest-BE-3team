@@ -453,4 +453,23 @@ app.put(
   })
 );
 
+/** /mockdata */
+app.get(
+  "/mockdata",
+  asyncHandler(async (req, res) => {
+    const studies = await prisma.study.findMany();
+    const habits = await prisma.habit.findMany();
+    const emojis = await prisma.emoji.findMany();
+    const habitSuccessed = await prisma.habitSuccessDate.findMany();
+
+    const data = {
+      "export const Studies": studies,
+      "export const Emoji": emojis,
+      "export const Habits": habits,
+      "export const HabitSuccessed": habitSuccessed,
+    };
+    res.send(data);
+  })
+);
+
 app.listen(process.env.PORT || 3000, () => console.log("Sever Started"));
