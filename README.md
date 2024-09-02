@@ -31,9 +31,9 @@ Database: PostgreSQL
 
 ## 배포 주소
 
-(배포 주소 통합 전)
+배포 주소 (https://onest-term-study-forest-be-3team-kjey.onrender.com/)
 
-## 팀원별 구현 기능 상세
+## 팀원별 집중 구현 기능 상세
 
 ### 이진우
 
